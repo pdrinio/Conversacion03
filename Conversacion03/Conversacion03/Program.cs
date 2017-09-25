@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Conversacion03
@@ -11,29 +12,31 @@ namespace Conversacion03
             Presencia MiPresencia = new Presencia();
             Lenguaje MiLenguaje = new Lenguaje();
             Conversacion MiConversacion = new Conversacion();
-            Nodo NodoActual = new Nodo();
-            string Respuesta;
-            string[] RespuestaEnArray;
+            Nodo NodoActual = new Nodo();        
             List<string> RespuestaEnLista = new List<string>();
 
+
             // inicialización
-            MiConversacion.NodoInicial = MiLenguaje.NodosLenguaje[0];
-            NodoActual = MiConversacion.NodoInicial;
+            Console.OutputEncoding = System.Text.Encoding.Unicode;
+            int SiguientePaso = 0; // empezamos en el primer nodo                        
 
-            // preguntamos, y obtenemos respuesta en lista de strings
-            Console.WriteLine(NodoActual.MensajeIda.ToString());
-            Respuesta = Console.ReadLine();
-            RespuestaEnArray = Respuesta.Split(' ');
-            foreach (string Palabra in RespuestaEnArray) { RespuestaEnLista.Add(Palabra); };
-
-            foreach (int key in NodoActual.SiguientesPasos.Keys)
+            // bucle de diálogo
+            while (SiguientePaso != 99 )
             {
-                if (NodoActual.SiguientesPasos.ContainsValue(RespuestaEnLista))
-                {
-                    Console.WriteLine("Ocurrencia localizada en clave: " + key.ToString());
-                }
-            }
+                // actualizamos el nodo en función del paso en el que estemos
+                NodoActual = MiLenguaje.NodosLenguaje[SiguientePaso]; // actualizamos el nodo actual según el paso anterior
+
+                // preguntamos, y obtenemos respuesta en lista de strings
+                RespuestaEnLista = Dialogos.FormulaPregunta(NodoActual);
+
+                // Evaluamos respuesta en el contexto del nodo actual, y devolvemos un siguiente paso
+                SiguientePaso = Dialogos.EvaluaSiguientePaso(NodoActual, RespuestaEnLista);
+            } 
+
+            Console.WriteLine("He finalizado");
             Console.ReadLine();
         }
+
+
     }
 }
