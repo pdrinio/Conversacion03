@@ -19,19 +19,41 @@ namespace Conversacion03
             return _RespuestaEnLista; //devolvemos la lista de lo que el usuario me ha dado
         }
 
-        public static int EvaluaSiguientePaso(Nodo _NodoActual, List<string> _RespuestaEnLista)
+        public static Respuesta EvaluaSiguientePaso(Nodo _NodoActual, List<string> _RespuestaEnLista)
         {
-            foreach (int key in _NodoActual.SiguientesPasos.Keys)
-            {
+            switch (_NodoActual.TipoNodo) {
+                case Nodo.TiposNodo.Pregunta:
+                    {
+                        List<string> TextoDevuelto = new List<string>();
+                        foreach (int key in _NodoActual.SiguientesPasos.Keys)
+                        {
+                            if (_NodoActual.SiguientesPasos[key].Any(s => _RespuestaEnLista.Contains(s.ToUpper())))
+                            {
+                                Console.WriteLine("Ocurrencia localizada en clave: " + key.ToString()); //DEBUG
+                                return new Respuesta(key, TextoDevuelto);
+                            }
+                        }
+                        Console.WriteLine("No te he entendido");
+                        return new Respuesta(0,TextoDevuelto);                        
+                    }
+                case Nodo.TiposNodo.ConsultaNombre:
+                    {
+                        int SiguientePaso; //preparo el objeto respuesta
+                        Respuesta MiRespuesta = new Respuesta(); 
 
-                if (_NodoActual.SiguientesPasos[key].Any(s => _RespuestaEnLista.Contains(s.ToUpper())))
-                {
-                    Console.WriteLine("Ocurrencia localizada en clave: " + key.ToString()); //DEBUG
-                    return key;
-                }         
+                        List<string> ListaNombres = Presencia.ListaHabitantes(); //obtenemos la lista de habitantes
+
+                        foreach (string Palabra in _RespuestaEnLista) //¿está algún nombre de la respuesta en la lista?
+                        {
+                            if(ListaNombres.Contains(Palabra) { MiRespuesta.TextoDevuelto.Add(Palabra); }
+                            SiguientePaso = 
+                        }
+                        return ;
+                    }
+                    
             }
-            Console.WriteLine("No te he entendido");
-            return 0;
+            return new Respuesta(0, new List<string>()); //TODO: quitar esto de aquí
         }
     }
+    
 }

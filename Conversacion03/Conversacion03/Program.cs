@@ -10,8 +10,8 @@ namespace Conversacion03
         {
             // objetos
             Presencia MiPresencia = new Presencia();
-            Lenguaje MiLenguaje = new Lenguaje();
-            Conversacion MiConversacion = new Conversacion();
+            Lenguaje MiLenguaje = new Lenguaje(); // lenguaje, vocabulario, funciones, etc
+            Conversacion MiConversacion = new Conversacion(); // tracking de los nodos recorridos
             Nodo NodoActual = new Nodo();        
             List<string> RespuestaEnLista = new List<string>();
 
@@ -20,11 +20,12 @@ namespace Conversacion03
             Console.OutputEncoding = System.Text.Encoding.Unicode;
             int SiguientePaso = 0; // empezamos en el primer nodo                        
 
+
             // bucle de diálogo
             while (SiguientePaso != 99 )
             {
                 // actualizamos el nodo en función del paso en el que estemos
-                NodoActual = MiLenguaje.NodosLenguaje[SiguientePaso]; // actualizamos el nodo actual según el paso anterior
+                NodoActual = MiLenguaje.NodosLenguaje.Where(x => x.IdNodo == SiguientePaso).Single();                
 
                 // preguntamos, y obtenemos respuesta en lista de strings
                 RespuestaEnLista = Dialogos.FormulaPregunta(NodoActual);

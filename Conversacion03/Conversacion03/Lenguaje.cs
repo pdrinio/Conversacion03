@@ -13,23 +13,27 @@ namespace Conversacion03
         {
             NodosLenguaje = new List<Nodo>();
 
-            // Nodo-0: indica final de la conversación
+            // Nodo-0: saludo, y apertura del primer árbol de decisión
+            Dictionary<int, List<string>> _Diccionario00 = new Dictionary<int, List<string>>();
+            _Diccionario00.Add(0, new List<string> { "hola", "buenos días", "buenas tardes" });
+            _Diccionario00.Add(1, new List<string> { "entrada", "entrar" });
+            _Diccionario00.Add(2, new List<string> { "salida", "salir" });
+            _Diccionario00.Add(3, new List<string> { "quien", "consulta" });
+            _Diccionario00.Add(4, new List<string> { "quienes", "cuantos" });
+            NodosLenguaje.Add(new Nodo(0, Nodo.TiposNodo.Pregunta, "Hola, ¿qué necesitas?", _Diccionario00));
 
-
-            // Nodo-1: saludo, y apertura del primer árbol de decisión
+            // Nodo-1: Quiere dar entrada
             Dictionary<int, List<string>> _Diccionario01 = new Dictionary<int, List<string>>();
-            _Diccionario01.Add(0, new List<string> { "hola" });
-            _Diccionario01.Add(1, new List<string> { "entrada", "entrar" });
-            _Diccionario01.Add(2, new List<string> { "salida", "salir" });
-            _Diccionario01.Add(3, new List<string> { "quien", "consulta" });
-            _Diccionario01.Add(4, new List<string> { "quienes", "cuantos" });
-            NodosLenguaje.Add(new Nodo(0, Nodo.TiposNodo.Pregunta, "Hola, ¿qué necesitas?", _Diccionario01));
+            _Diccionario01.Add(100, Presencia.ListaHabitantes());
+            NodosLenguaje.Add(new Nodo(1, Nodo.TiposNodo.Pregunta, "¿A quién?", _Diccionario01));
 
-            // Nodo-2: ¿a quién quiere dar entrada?
-            Dictionary<int, List<string>> _Diccionario02 = new Dictionary<int, List<string>>();
-            _Diccionario02.Add(7, Presencia.ListaHabitantes());
-            NodosLenguaje.Add(new Nodo(1, Nodo.TiposNodo.ConsultaNombre, "¿A quién?", _Diccionario02));
 
+            // Nodo-100: ¿A quién?
+            Dictionary<int, List<string>> _Diccionario100 = new Dictionary<int, List<string>>();
+            _Diccionario100.Add(100, new List <string>()); //una lista vacía indica que no he entendido
+            _Diccionario100.Add(101, new List<string> { " ", " " }); //una lista no vacía indica que entendió unos nombres
+            NodosLenguaje.Add(new Nodo(100, Nodo.TiposNodo.ConsultaNombre, "", _Diccionario100));
+            
         }
     }
 }
