@@ -7,7 +7,7 @@ namespace Conversacion03
     class Respuesta
     {
         public int SiguientePaso { get; set; }
-        public List<string> TextoDevuelto { get; set; }
+        public List<string> MensajeVuelta { get; set; }
 
 
         public Respuesta()
@@ -16,10 +16,10 @@ namespace Conversacion03
             
         }
 
-        public Respuesta(int _SiguientePaso, List<string> _TextoDevuelto)
+        public Respuesta(int _SiguientePaso, List<string> _MensajeVuelta)
         {
             SiguientePaso = _SiguientePaso;
-            TextoDevuelto = _TextoDevuelto;
+            MensajeVuelta = _MensajeVuelta;
         }
     }
 }

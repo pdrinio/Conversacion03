@@ -11,6 +11,7 @@ namespace Conversacion03
         public TiposNodo TipoNodo;
         public string MensajeIda;
         public Dictionary<int, List<string>> SiguientesPasos;
+        public List<string> MensajeVuelta;
 
         public Nodo()
         {
@@ -27,12 +28,13 @@ namespace Conversacion03
 
         }
 
-        public Nodo(int IdNodo, TiposNodo TipoNodo, string MensajeIda, Dictionary<int, List<string>> SiguientesPasos)
+        public Nodo(int IdNodo, TiposNodo TipoNodo, string MensajeIda, Dictionary<int, List<string>> SiguientesPasos, List<string> MensajeVuelta)
         {
             this.IdNodo = IdNodo;
             this.TipoNodo = TipoNodo;
             this.MensajeIda = MensajeIda;
             this.SiguientesPasos = SiguientesPasos;
+            this.MensajeVuelta = MensajeVuelta;
         }
 
 

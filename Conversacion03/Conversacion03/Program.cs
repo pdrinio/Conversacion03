@@ -14,24 +14,22 @@ namespace Conversacion03
             Conversacion MiConversacion = new Conversacion(); // tracking de los nodos recorridos
             Nodo NodoActual = new Nodo();        
             List<string> RespuestaEnLista = new List<string>();
-
+            Respuesta MiRespuesta = new Respuesta(0, new List<string>());
 
             // inicialización
-            Console.OutputEncoding = System.Text.Encoding.Unicode;
-            int SiguientePaso = 0; // empezamos en el primer nodo                        
-
+            Console.OutputEncoding = System.Text.Encoding.Unicode;            
 
             // bucle de diálogo
-            while (SiguientePaso != 99 )
+            while (MiRespuesta.SiguientePaso != 99 )
             {
                 // actualizamos el nodo en función del paso en el que estemos
-                NodoActual = MiLenguaje.NodosLenguaje.Where(x => x.IdNodo == SiguientePaso).Single();                
+                NodoActual = MiLenguaje.NodosLenguaje.Where(x => x.IdNodo == MiRespuesta.SiguientePaso).Single();                
 
                 // preguntamos, y obtenemos respuesta en lista de strings
                 RespuestaEnLista = Dialogos.FormulaPregunta(NodoActual);
 
                 // Evaluamos respuesta en el contexto del nodo actual, y devolvemos un siguiente paso
-                SiguientePaso = Dialogos.EvaluaSiguientePaso(NodoActual, RespuestaEnLista);
+                MiRespuesta = Dialogos.EvaluaSiguientePaso(NodoActual, RespuestaEnLista);
             } 
 
             Console.WriteLine("He finalizado");
