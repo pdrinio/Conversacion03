@@ -25,7 +25,7 @@ namespace Conversacion03
             // Nodo-1: Quiere dar entrada
             Dictionary<int, List<string>> _Diccionario01 = new Dictionary<int, List<string>>();
             _Diccionario01.Add(100, Presencia.ListaHabitantes());
-            NodosLenguaje.Add(new Nodo(1, Nodo.TiposNodo.Pregunta, "¿A quién?", _Diccionario01, new List<string>()));
+            NodosLenguaje.Add(new Nodo(1, Nodo.TiposNodo.ConsultaNombre, "¿A quién?", _Diccionario01, new List<string>()));
 
 
             // Nodo-100: ¿A quién?

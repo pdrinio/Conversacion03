@@ -47,12 +47,16 @@ namespace Conversacion03
                         List<string> MensajeVuelta = new List<string>();
                         // Respuesta MiRespuesta = new Respuesta();TODO: esto sobra, ¿no?
 
-                        List<string> ListaNombres = Presencia.ListaHabitantes(); //obtenemos la lista de habitantes
+                        List<string> ListaNombres = Presencia.ListaHabitantes(); //obtenemos la lista de habitantes EN MAYÚSCULAS
+                        
 
                         foreach (string Palabra in _RespuestaEnLista) //¿está algún nombre de la respuesta en la lista?
                         {
-                            if(ListaNombres.Contains(Palabra)) { MensajeVuelta.Add(Palabra); }
-                            SiguientePaso = _NodoActual.SiguientesPasos.First().Key; //si hay un nombre válido voy al (único) siguiente paso que haya                            
+                            if(ListaNombres.Contains(Palabra.ToUpper()))
+                            {
+                                MensajeVuelta.Add(Palabra); 
+                                SiguientePaso = _NodoActual.SiguientesPasos.First().Key; //si hay un nombre válido voy al (único) siguiente paso que haya                            
+                            }
                         }
 
                         if(SiguientePaso  == PasoActual) 

@@ -38,7 +38,15 @@ namespace Conversacion03
 
         public static List<string> ListaHabitantes()
         {
-            return Enum.GetNames(typeof(Habitantes)).ToList();
+            List<string> _Personas =  Enum.GetNames(typeof(Habitantes)).ToList();
+            List<string> _PersonasMayusculas = new List<string>();
+
+            foreach(string Persona in _Personas)
+            {
+                _PersonasMayusculas.Add(Persona.ToUpper());
+            }
+
+            return _PersonasMayusculas;
         }
     }
 
