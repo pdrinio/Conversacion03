@@ -24,13 +24,13 @@ namespace Conversacion03
 
             // Nodo-1: Quiere dar entrada
             Dictionary<int, List<string>> _Diccionario01 = new Dictionary<int, List<string>>();
-            _Diccionario01.Add(100, Presencia.ListaHabitantes());
+            _Diccionario01.Add(0, Presencia.ListaHabitantes()); //gestiono desde Dialogos.cs el siguiente nodo
             NodosLenguaje.Add(new Nodo(1, Nodo.TiposNodo.ConsultaNombre, "¿A quién?", _Diccionario01, new List<string>()));
 
 
-            // Nodo-100: ¿A quién?
+            // Nodo-100: TODO Esto podría estar sobrando
             Dictionary<int, List<string>> _Diccionario100 = new Dictionary<int, List<string>>();
-            _Diccionario100.Add(100, new List <string>()); //si "me responde algo que entiendo", continúa (y si no, va a repetir el mismo nodo            
+            _Diccionario100.Add(0, new List <string>()); 
             NodosLenguaje.Add(new Nodo(100, Nodo.TiposNodo.ConsultaNombre, "", _Diccionario100, new List<string>()));
             
         }

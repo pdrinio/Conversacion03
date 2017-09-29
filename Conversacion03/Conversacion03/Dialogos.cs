@@ -6,15 +6,22 @@ using System.Text;
 namespace Conversacion03
 {
     class Dialogos
-    {
+    {        
         public static List<string> FormulaPregunta(Nodo _NodoActual)
         {
             Console.WriteLine(_NodoActual.MensajeIda.ToString()); //lanzamos la pregunta del nodo
+            var CaracteresAEliminar = new string[] { "@", ",", ".", ";", "'" }; //eliminaremos de lo escuchado cualquier signo de puntuación
 
             var Respuesta = Console.ReadLine(); //la leemos y generamos una lista con ella
             var RespuestaEnArray = Respuesta.Split(' ');
             List<string> _RespuestaEnLista = new List<string>();
-            foreach (string Palabra in RespuestaEnArray) { _RespuestaEnLista.Add(Palabra.ToUpper()); };
+            foreach (string Palabra in RespuestaEnArray) //
+            {
+                var PalabraSinSignos = Palabra; 
+                foreach (var c in CaracteresAEliminar) {
+                    PalabraSinSignos = Palabra.Replace(c, String.Empty); }
+                _RespuestaEnLista.Add(PalabraSinSignos.ToUpper());
+            };
 
             return _RespuestaEnLista; //devolvemos la lista de lo que el usuario me ha dado
         }
@@ -65,6 +72,8 @@ namespace Conversacion03
                         }
                         else
                         {
+                            //DEBUG: encontró respuesta
+                            foreach (string nombre in MensajeVuelta) { Console.WriteLine(nombre); }
                             return new Respuesta(SiguientePaso, MensajeVuelta);
                         }                        
                     }                    
