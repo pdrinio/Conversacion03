@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace Conversacion03
 {
@@ -40,7 +41,7 @@ namespace Conversacion03
                         {
                             if (_NodoActual.SiguientesPasos[key].Any(s => _RespuestaEnLista.Contains(s.ToUpper())))
                             {
-                                Console.WriteLine("Ocurrencia localizada en clave: " + key.ToString()); //DEBUG
+                                //Console.WriteLine("Ocurrencia localizada en clave: " + key.ToString()); //DEBUG
                                 SiguientePaso = key;
                                 return new Respuesta(SiguientePaso, TextoDevuelto);
                             }
@@ -77,7 +78,14 @@ namespace Conversacion03
                             foreach (string nombre in MensajeVuelta) { Console.WriteLine(nombre); }
                             return new Respuesta(SiguientePaso, MensajeVuelta);
                         }                        
-                    }                    
+                    }
+                case Nodo.TiposNodo.Orden:
+                    {
+
+                        Environment.Exit(-1); //Cerramos la aplicación //TODO: MEJORAR ESTO.....
+                        return new Respuesta(0, new List<string>());// NUNCA VA A LLEGAR AQUÍ
+                    }
+
             }
             return new Respuesta(0, new List<string>()); //TODO: quitar esto de aquí
         }
