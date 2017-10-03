@@ -13,6 +13,7 @@ namespace Conversacion03
         public Conversacion()
         {
             Nodos = new List<Nodo>();
+            //TODO: ir recordando aquí todos los nodos de una conversación
             //            NodoActual = 
         }
     }

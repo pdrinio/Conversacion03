@@ -7,22 +7,25 @@ namespace Conversacion03
 {
     public class Presencia
     {
-        public enum Habitantes { Pa, Ma, Cris, Pablo };
+        public enum Habitantes { Tani, Pablo, César, David, Javi, Iria, Fer, Pedro };
         public List<Habitantes> Personas;
 
 
         public Presencia()
         {
-            //Personas.Add(Habitantes.Pa);
-            //Personas.Add(Habitantes.Ma);
-            //Personas.Add(Habitantes.Cris);
-            //Personas.Add(Habitantes.Pablo);
+
         }
 
-        public void Add(Habitantes HabitanteEntrante)
+        public void Add(string Entrante)
         {
-            if (!Personas.Contains(HabitanteEntrante))
-                Personas.Add(HabitanteEntrante);
+            Habitantes HabitanteEntrante;
+
+            if(Enum.TryParse<Habitantes>(Entrante, out HabitanteEntrante))
+            {
+                if (!Personas.Contains(HabitanteEntrante))
+                    Personas.Add(HabitanteEntrante);
+            }
+
         }
 
         public void Remove(Habitantes HabitanteSaliente)

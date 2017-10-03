@@ -28,6 +28,9 @@ namespace Conversacion03
                 // preguntamos, y obtenemos respuesta en lista de strings
                 RespuestaEnLista = Dialogos.FormulaPregunta(NodoActual);
 
+                // ejecuto la acción del nodo
+                NodoActual.AcciónARealizar();
+
                 // Evaluamos respuesta en el contexto del nodo actual, y devolvemos un siguiente paso
                 MiRespuesta = Dialogos.EvaluaSiguientePaso(NodoActual, RespuestaEnLista);
             } 
