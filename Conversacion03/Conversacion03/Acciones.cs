@@ -9,12 +9,17 @@ namespace Conversacion03
 
         public static void NoHacerNada() { }
 
-        public static void DarEntrada(string Persona, Presencia MiPresencia)
+        public static void DarEntrada(List<string> Personas, Presencia MiPresencia)
         {
 
             //TODO: controlar que no estaba ya en la lista; pasar de string a List
-            MiPresencia.Add(Persona);
+            //MiPresencia.Add(Persona);
             
+        }
+
+        internal static void DarEntrada(string v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
