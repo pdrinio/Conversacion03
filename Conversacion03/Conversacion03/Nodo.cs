@@ -12,21 +12,22 @@ namespace Conversacion03
         public string MensajeIda;
         public Dictionary<int, List<string>> SiguientesPasos;
         public List<string> MensajeVuelta;
-        public Action AcciónARealizar;
+        public List<Object> ArgumentosAccion;
+        public Action AccionARealizar;
 
-        public Nodo()
+        public Nodo(int v)
         {
    
         }
 
-        public Nodo(int IdNodo, TiposNodo TipoNodo, string MensajeIda, Dictionary<int, List<string>> SiguientesPasos, List<string> MensajeVuelta, Action _AccionARealizar)
+        public Nodo(int IdNodo, TiposNodo TipoNodo, string MensajeIda, Dictionary<int, List<string>> SiguientesPasos, List<string> MensajeVuelta, List<Object> ArgumentosAccion, Action _AccionARealizar)
         {
             this.IdNodo = IdNodo;
             this.TipoNodo = TipoNodo;
             this.MensajeIda = MensajeIda;
             this.SiguientesPasos = SiguientesPasos;
             this.MensajeVuelta = MensajeVuelta;
-            this.AcciónARealizar = _AccionARealizar;
+            this.AccionARealizar = _AccionARealizar;
         }
 
 

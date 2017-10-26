@@ -12,12 +12,13 @@ namespace Conversacion03
             Presencia MiPresencia = new Presencia();
             Lenguaje MiLenguaje = new Lenguaje(); // lenguaje, vocabulario, funciones, etc
             Conversacion MiConversacion = new Conversacion(); // tracking de los nodos recorridos
-            Nodo NodoActual = new Nodo();        
+            Nodo NodoActual;
             List<string> RespuestaEnLista = new List<string>();
             Respuesta MiRespuesta = new Respuesta(0, new List<string>());
 
             // inicialización
-            Console.OutputEncoding = System.Text.Encoding.Unicode;            
+            Console.OutputEncoding = System.Text.Encoding.Unicode;
+            NodoActual = new Nodo(0);
 
             // bucle de diálogo
             while (MiRespuesta.SiguientePaso != 99 )
@@ -29,7 +30,7 @@ namespace Conversacion03
                 RespuestaEnLista = Dialogos.FormulaPregunta(NodoActual);
 
                 // ejecuto la acción del nodo
-                NodoActual.AcciónARealizar();
+                NodoActual.AccionARealizar();
 
                 // Evaluamos respuesta en el contexto del nodo actual, y devolvemos un siguiente paso
                 MiRespuesta = Dialogos.EvaluaSiguientePaso(NodoActual, RespuestaEnLista);
