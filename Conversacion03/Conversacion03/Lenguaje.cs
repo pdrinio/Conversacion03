@@ -26,15 +26,17 @@ namespace Conversacion03
             // Nodo-1: Quiere dar entrada
             Dictionary<int, List<string>> _Diccionario01 = new Dictionary<int, List<string>>();
             _Diccionario01.Add(0, Presencia.ListaHabitantes()); //gestiono desde Dialogos.cs el siguiente nodo
-            NodosLenguaje.Add(new Nodo(1, Nodo.TiposNodo.ConsultaNombre, "¿A quién?", _Diccionario01, new List<string>(), new List<Object>(), () => Acciones.NoHacerNada()));//Acciones.DarEntrada(new List<string>(), new Presencia())));
+            NodosLenguaje.Add(new Nodo(1, Nodo.TiposNodo.ConsultaNombre, "¿A quién?", _Diccionario01, new List<string>(), new List<Object>(), () => Acciones.NoHacerNada()));
 
             // Nodo-2: hacer la entrada efectiva
-
+            Dictionary<int, List<string>> _Diccionario02 = new Dictionary<int, List<string>>();
+            _Diccionario02.Add(0, Presencia.ListaHabitantes()); //gestiono desde Dialogos.cs el siguiente nodo
+            NodosLenguaje.Add(new Nodo(2, Nodo.TiposNodo.Accion, "", _Diccionario02, new List<string>(), new List<Object>(), () => Acciones.NoHacerNada()));
 
             // Nodo-3: Quiere dar salida
             Dictionary<int, List<string>> _Diccionario03 = new Dictionary<int, List<string>>();
             _Diccionario03.Add(0, Presencia.ListaHabitantes()); //gestiono desde Dialogos.cs el siguiente nodo
-            NodosLenguaje.Add(new Nodo(2, Nodo.TiposNodo.ConsultaNombre, "¿A quién?", _Diccionario03, new List<string>(), new List<Object>(), () => Acciones.NoHacerNada()));
+            NodosLenguaje.Add(new Nodo(3, Nodo.TiposNodo.ConsultaNombre, "¿A quién?", _Diccionario03, new List<string>(), new List<Object>(), () => Acciones.NoHacerNada()));
 
 
             // Nodo-5: finalizar la conversación

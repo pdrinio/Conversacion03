@@ -7,7 +7,7 @@ namespace Conversacion03
     class Nodo
     {
         public int IdNodo;
-        public enum TiposNodo { Pregunta, Afirmacion, ConsultaNombre, Orden };
+        public enum TiposNodo { Pregunta, Afirmacion, ConsultaNombre, Orden, Accion };
         public TiposNodo TipoNodo;
         public string MensajeIda;
         public Dictionary<int, List<string>> SiguientesPasos;

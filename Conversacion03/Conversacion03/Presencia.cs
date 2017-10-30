@@ -28,10 +28,17 @@ namespace Conversacion03
 
         }
 
-        public void Remove(Habitantes HabitanteSaliente)
+
+        public void Remove(string Saliente)
         {
-            if (Personas.Contains(HabitanteSaliente))
-                Personas.Remove(HabitanteSaliente);
+            Habitantes HabitanteSaliente;
+
+            if (Enum.TryParse<Habitantes>(Saliente, out HabitanteSaliente))
+            {
+                if (Personas.Contains(HabitanteSaliente))
+                    Personas.Remove(HabitanteSaliente);
+            }
+
         }
 
         public int Contains()

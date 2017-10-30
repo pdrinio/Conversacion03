@@ -1,25 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Conversacion03
 {
     class Acciones
     {
-
         public static void NoHacerNada() { }
 
-        public static void DarEntrada(List<string> Personas, Presencia MiPresencia)
-        {
+        public static Presencia DarEntrada(Presencia MiPresencia, List<object> argumentos)
+        {            
+            //List<string> Nombres = new List<string>(); me gusta más declarar esto que usar var, pero la vida moderna no va por ahí
+            var Nombres = argumentos.Select(s => (string)s).ToList();
+    
+            foreach (string nombre in Nombres) {
+                //TODO: controlar que no estaba ya en la lista; pasar de string a List
+                MiPresencia.Add(nombre);
+            }
 
-            //TODO: controlar que no estaba ya en la lista; pasar de string a List
-            //MiPresencia.Add(Persona);
-            
+            return MiPresencia;
         }
 
-        internal static void DarEntrada(string v)
+        public static Presencia DarSalida(Presencia MiPresencia, List<object> argumentos)
         {
-            throw new NotImplementedException();
+            var Nombres = argumentos.Select(s => (string)s).ToList();
+
+            foreach (string nombre in Nombres)
+            {
+                //TODO: controlar que no estaba ya en la lista; pasar de string a List
+                MiPresencia.Remove(nombre);
+            }
+
+            return MiPresencia;
         }
+
     }
 }

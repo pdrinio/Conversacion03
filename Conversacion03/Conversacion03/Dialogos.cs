@@ -43,11 +43,11 @@ namespace Conversacion03
                             {
                                 //Console.WriteLine("Ocurrencia localizada en clave: " + key.ToString()); //DEBUG
                                 SiguientePaso = key;
-                                return new Respuesta(SiguientePaso, TextoDevuelto);
+                                return new Respuesta(SiguientePaso, TextoDevuelto, _NodoActual);
                             }
                         }
                         Console.WriteLine("No te he entendido");
-                        return new Respuesta(0,TextoDevuelto);                        
+                        return new Respuesta(0,TextoDevuelto, _NodoActual);                        
                     }
                 case Nodo.TiposNodo.ConsultaNombre:
                     {
@@ -70,24 +70,28 @@ namespace Conversacion03
 
                         if(SiguientePaso  == PasoActual) 
                         {//no encontró respuesta, vuelve a repetir la pregunta
-                            return new Respuesta(PasoActual, new List<string>());
+                            return new Respuesta(PasoActual, new List<string>(), _NodoActual);
                         }
                         else
                         {
-                            //DEBUG: encontró respuesta
-                            foreach (string nombre in MensajeVuelta) { Console.WriteLine(nombre); }
-                            return new Respuesta(SiguientePaso, MensajeVuelta);
+                            
+                            foreach (string nombre in MensajeVuelta) {
+                                _NodoActual.ArgumentosAccion.Add((object)nombre); //devuelve como argumentos para la acción siguiente la lista de nombres
+                                Console.WriteLine(nombre);//DEBUG: encontró respuesta
+                            }
+                            
+                            return new Respuesta(SiguientePaso, MensajeVuelta, _NodoActual);
                         }                        
                     }
                 case Nodo.TiposNodo.Orden:
                     {
 
                         Environment.Exit(-1); //Cerramos la aplicación //TODO: MEJORAR ESTO.....
-                        return new Respuesta(0, new List<string>());// NUNCA VA A LLEGAR AQUÍ
+                        return new Respuesta(0, new List<string>(), _NodoActual);// NUNCA VA A LLEGAR AQUÍ
                     }
 
             }
-            return new Respuesta(0, new List<string>()); //TODO: quitar esto de aquí
+            return new Respuesta(0, new List<string>(), _NodoActual); //TODO: quitar esto de aquí
         }
     }
     

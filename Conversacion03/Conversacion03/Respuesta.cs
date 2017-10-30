@@ -8,6 +8,7 @@ namespace Conversacion03
     {
         public int SiguientePaso { get; set; }
         public List<string> MensajeVuelta { get; set; }
+        public Nodo NodoActual;
 
 
         public Respuesta()
@@ -16,10 +17,11 @@ namespace Conversacion03
             
         }
 
-        public Respuesta(int _SiguientePaso, List<string> _MensajeVuelta)
+        public Respuesta(int _SiguientePaso, List<string> _MensajeVuelta, Nodo _NodoActual)
         {
             SiguientePaso = _SiguientePaso;
             MensajeVuelta = _MensajeVuelta;
+            NodoActual = _NodoActual;
         }
     }
 }
